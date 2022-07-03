@@ -1,6 +1,6 @@
-class GameGenerator{
-    
-    GenerateGame(difficulty){
+class BoardFactory{
+
+    CreateNewBoard(difficulty){
         let range = [...Array(difficulty*difficulty -1).keys];
         // 0 will be our empty spot
         range = range.map(elem => elem+=1);
@@ -17,7 +17,6 @@ class GameGenerator{
         var currentIndex = this.arrayToShuffle.length;
 	    var tempValue, randomIndex;
 
-	    // While there remain elements to shuffle...
 	    while (currentIndex > 0) {
 		    randomIndex = Math.floor(Math.random() * currentIndex);
 		    currentIndex -= 1;
@@ -38,7 +37,7 @@ class GameGenerator{
 
     ValidateGameBoard(arrayToCheck, difficulty){
         let countOfReverses = arrayToCheck.map((elem, index) => {
-            this.#CountNumberOfReverses(arrayToCheck.slice(index).slice(1), elem)
+            return this.#CountNumberOfReverses(arrayToCheck.slice(index), elem)
         });
         let sumOfReverses = 0;
         countOfReverses.map(elem=> sumOfReverses+= elem);
@@ -46,7 +45,7 @@ class GameGenerator{
         if(difficulty % 2){
             return  ! (sumOfReverses % 2);
         }else{
-            return !((sumOfReverses + Math.floor(arrayToCheck.indexOf(0)/difficulty)) % 2)
+            return !((sumOfReverses + Math.floor(arrayToCheck.indexOf(0)/difficulty) +1) % 2)
         }
     }
 
@@ -55,8 +54,7 @@ class GameGenerator{
         if(!numberToCheck) return count;
 
         subArrayToCheck.forEach(element => {
-            if(element == numberToCheck) pass;
-            if(element > numberToCheck) {
+            if(element < numberToCheck && element == 0) {
                 count++;
             }
         });
