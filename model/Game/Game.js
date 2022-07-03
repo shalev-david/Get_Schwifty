@@ -1,5 +1,7 @@
 class Game {
-    constructor(player){
-        
+    constructor(board, startTime){
+        this.board = board;
+        this.startTime = startTime;
     }
+
 }
