@@ -3,13 +3,13 @@ export class DisplayBoard{
         this.game = game;
     }
 
-    Display(gameController, addValueToCell){
+    Display(gameController, addValueToCell, alertWin){
         let container = this.#GenerateBoard(this.game.difficulty);
-        this.#AddCellsToContainer(gameController,container,addValueToCell)
+        this.#AddCellsToContainer(gameController,container,addValueToCell, alertWin)
         document.body.appendChild(container);
     }
 
-    #AddCellsToContainer(gameController, container, addValueToCell){
+    #AddCellsToContainer(gameController, container, addValueToCell, alertWin){
         var self = this;
 
         for(let i = 0; i<this.game.difficulty; i++){
@@ -21,7 +21,7 @@ export class DisplayBoard{
                 if(this.game.board[i][j]) 
                 {
                     addValueToCell(gridItem);
-                    gridItem.addEventListener("click",function() {gameController.Move(self.MoveCell, parseInt(gridItem.id))});
+                    gridItem.addEventListener("click",function() {gameController.Move(self.MoveCell, parseInt(gridItem.id), function(){alertWin.Won()})});
                 }
                 container.appendChild(gridItem);
             }

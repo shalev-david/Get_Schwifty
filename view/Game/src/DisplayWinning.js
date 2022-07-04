@@ -1,18 +1,19 @@
 export class DisplayWinning{
-    constructor(){
-
+    constructor(game){
+        this.game = game;
     }
 
-    Won(game){
-        let winningMessage = this.#CreateWinningMessage(game)
+    Won(){
+        let winningMessage = this.#CreateWinningMessage()
+        document.body.appendChild(winningMessage);
     }
 
-    #CreateWinningMessage(game){
+    #CreateWinningMessage(){
         let winningMessage = document.createElement("div");
         winningMessage.className = "won";
-        winningMessage.innerHTML = `Congrats! You have won a game of difficulty ${game.difficulty} in ${game.moves} moves`;
+        winningMessage.innerHTML = `Congrats! You have won a game of difficulty ${this.game.difficulty} in ${this.game.moves} moves`;
         
-        winningMessage.appendChild(playerCreation);
+        winningMessage.appendChild(this.#CreatePlayerInput());
 
         return winningMessage;
     }
@@ -25,9 +26,9 @@ export class DisplayWinning{
         nameInput.type = "text";
         nameInput.className = "name";
 
-        let submitButton = document.createElement("submit");
-        submitButton.className("submit");
-        submitButton.innerText("Submit");
+        let submitButton = document.createElement("button");
+        submitButton.className = "submitPlayer";
+        submitButton.innerHTML = "Submit";
         
         playerCreation.appendChild(nameInput);
         playerCreation.appendChild(submitButton);

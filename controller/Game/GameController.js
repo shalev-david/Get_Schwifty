@@ -3,10 +3,13 @@ export class GameController{
         this.game = game
     }
 
-    Move(moveCell, id){
+    Move(moveCell, id, alertWin){
         if(this.game.Move(id))
         { 
             moveCell(id.toString());
+            if(this.game.Win()){
+                alertWin();
+            }
         }
     }
 }
