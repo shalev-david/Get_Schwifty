@@ -28,6 +28,21 @@ export class Game {
         else return false;
     }
 
+    Win(){
+        let count = 1
+        if(this.board[this.difficulty-1][this.difficulty-1]) return false;
+        
+        for(let i =0; i<this.difficulty; i++){
+            for(let j = 0; j<this.difficulty; j++){
+                if(count != this.board[i][j] && count != (this.difficulty *this.difficulty)){
+                    return false;
+                }
+                count++;
+            }
+        }
+        return true;
+    }
+
     #CanMoveTo(row, column){
         if(row == -1 || row == this.difficulty || column == -1 || column ==this. difficulty) return false;
         else return !this.board[row][column];
