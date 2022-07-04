@@ -6,7 +6,7 @@ export class GameController{
     Move(moveCell, id){
         if(this.game.Move(id))
         { 
-            moveCell(id);
+            moveCell(id.toString());
         }
     }
 }
