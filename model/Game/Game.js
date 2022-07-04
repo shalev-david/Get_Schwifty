@@ -1,8 +1,9 @@
 export class Game {
-    constructor(board, startTime, difficulty){
+    constructor(board, startTime, difficulty, moves=0){
         this.board = board;
         this.startTime = startTime;
         this.difficulty = difficulty;
+        this.moves = moves
     }
 
     CanMove(id){
@@ -23,6 +24,7 @@ export class Game {
             let indexOfId = this.#GetIndexById(id);
             this.board[indexOfEmptySlot[0]][indexOfEmptySlot[1]] = id;
             this.board[indexOfId[0]][indexOfId[1]] = 0;
+            this.moves++;
             return true;
         }
         else return false;
