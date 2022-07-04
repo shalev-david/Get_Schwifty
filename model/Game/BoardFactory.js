@@ -1,20 +1,21 @@
-class BoardFactory{
+export class BoardFactory{
 
     CreateNewBoard(difficulty){
-        let range = [...Array(difficulty*difficulty -1).keys];
+        let range = [...Array(difficulty*difficulty -1).keys()];
         // 0 will be our empty spot
         range = range.map(elem => elem+=1);
+        var shuffeledArray;
         range.push(0);
         do{
-            var shuffeledRange = this.#ShuffleArray(range);
+            shuffeledArray = this.#ShuffleArray(range);
         }
-        while(this.ValidateGameBoard(shuffeledRange))
+        while(!this.ValidateGameBoard(shuffeledArray))
 
-        return this.#GenerateBoard(shuffeledRange, difficulty);
+        return this.#GenerateBoard(shuffeledArray, difficulty);
     }
 
     #ShuffleArray(arrayToShuffle){
-        var currentIndex = this.arrayToShuffle.length;
+        var currentIndex = arrayToShuffle.length;
 	    var tempValue, randomIndex;
 
 	    while (currentIndex > 0) {
@@ -25,6 +26,7 @@ class BoardFactory{
 		    arrayToShuffle[currentIndex] = arrayToShuffle[randomIndex];
 		    arrayToShuffle[randomIndex] = tempValue;
 	    }
+        return arrayToShuffle;
     }
 
     #GenerateBoard(arrayToTransform, difficulty){

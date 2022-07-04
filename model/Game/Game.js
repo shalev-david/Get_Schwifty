@@ -1,4 +1,4 @@
-class Game {
+export class Game {
     constructor(board, startTime, difficulty){
         this.board = board;
         this.startTime = startTime;
@@ -8,12 +8,12 @@ class Game {
     CanMove(id){
         if(id == 0) return false;
         let index = this.#GetIndexById(id);
-       if(this.#CanMoveTo(index[0]+1, index[1])) return [index[0]+1, index[1]];
-       if(this.#CanMoveTo(index[0]-1, index[1])) return [index[0]-1, index[1]];
-       if(this.#CanMoveTo(index[0], index[1]+1)) return [index[0], index[1]+1];
-       if(this.#CanMoveTo(index[0], index[1]-1)) return [index[0], index[1]-1];
-
-       return false;
+        if(this.#CanMoveTo(index[0]+1, index[1])) return [index[0]+1, index[1]];
+        if(this.#CanMoveTo(index[0]-1, index[1])) return [index[0]-1, index[1]];
+        if(this.#CanMoveTo(index[0], index[1]+1)) return [index[0], index[1]+1];
+        if(this.#CanMoveTo(index[0], index[1]-1)) return [index[0], index[1]-1];
+        
+        return false;
     }
 
     Move(id){
