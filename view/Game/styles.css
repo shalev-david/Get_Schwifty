@@ -2,7 +2,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 97vh;
+    min-height: 100vh;
 }
 
 .container{
@@ -20,3 +20,34 @@ body{
     font-family: cursive;
     text-align: center;
 }
+
+.won{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(116, 173, 246, 0.65);
+    justify-content: center;
+    align-items: center;
+
+}
+
+.player-creation-form{
+    display: inline-grid;
+    padding: 5rem;
+}
+
+.player-creation-form button {
+    background-color: white;
+    border: 1px solid rgb(14, 86, 243);
+    padding: .25em .5em;
+}
+
+.player-creation-form span {
+    color: white;
+    font-size: 2rem;
+    padding: 10em 0em;
+}
+  

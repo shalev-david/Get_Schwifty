@@ -11,7 +11,6 @@ export class DisplayWinning{
     #CreateWinningMessage(){
         let winningMessage = document.createElement("div");
         winningMessage.className = "won";
-        winningMessage.innerHTML = `Congrats! You have won a game of difficulty ${this.game.difficulty} in ${this.game.moves} moves`;
         
         winningMessage.appendChild(this.#CreatePlayerInput());
 
@@ -19,8 +18,14 @@ export class DisplayWinning{
     }
 
     #CreatePlayerInput(){
+
         let playerCreation = document.createElement("div");
         playerCreation.className = "player-creation-form";
+
+        let playerScore = document.createElement("span");
+        playerScore.className = "score";
+        playerScore.innerHTML = `Congrats! You have won a game of difficulty ${this.game.difficulty} in ${this.game.moves} moves`;
+
 
         let nameInput = document.createElement("input");
         nameInput.type = "text";
@@ -30,6 +35,7 @@ export class DisplayWinning{
         submitButton.className = "submitPlayer";
         submitButton.innerHTML = "Submit";
         
+        playerCreation.appendChild(playerScore);
         playerCreation.appendChild(nameInput);
         playerCreation.appendChild(submitButton);
         return playerCreation;        
